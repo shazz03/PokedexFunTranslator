@@ -49,8 +49,8 @@ namespace PokedexFunTranslator.Tests
         [TestMethod]
         public async Task PokemonController_Get_Invalid_Name_Returns_NotFound()
         {
-            _pokemonServiceMock.Setup(s => s.Get("test")).ReturnsAsync(new PokemonSpeciesResponseDto
-            { Response = new ResponseModel { StatusCode = HttpStatusCode.BadRequest } });
+            _pokemonServiceMock.Setup(s => s.Get("test123")).ReturnsAsync(new PokemonSpeciesResponseDto
+            { Response = new ResponseModel { StatusCode = HttpStatusCode.NotFound } });
             var controller = new PokemonController(_pokemonServiceMock.Object);
 
             var result = await controller.Get("test");

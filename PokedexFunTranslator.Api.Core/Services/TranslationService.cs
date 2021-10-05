@@ -15,7 +15,7 @@ namespace PokedexFunTranslator.Api.Core.Services
         private readonly FunTranslationApiConfig _config;
         private readonly IHttpClientFactory _clientFactory;
 
-        public TranslationService(IOptions<FunTranslationApiConfig> config, IHttpClientFactory clientFactory)
+        public TranslationService(IHttpClientFactory clientFactory, IOptions<FunTranslationApiConfig> config)
         {
             _clientFactory = clientFactory;
             _config = config?.Value;
@@ -25,6 +25,7 @@ namespace PokedexFunTranslator.Api.Core.Services
         {
             if (string.IsNullOrWhiteSpace(text))
                 return null;
+
             try
             {
                 var httpClient = _clientFactory.CreateClient("FunTranslationApiClient");

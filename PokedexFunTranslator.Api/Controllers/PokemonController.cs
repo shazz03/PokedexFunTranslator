@@ -26,7 +26,7 @@ namespace PokedexFunTranslator.Api.Controllers
                 return StatusCode((int)result.Response?.StatusCode,
                     result.Response?.StatusCode == HttpStatusCode.OK ? result : null);
 
-            return BadRequest();
+            return NotFound();
         }
 
         [HttpGet("{name}")]
@@ -38,7 +38,7 @@ namespace PokedexFunTranslator.Api.Controllers
                 return StatusCode((int)result.Response?.StatusCode,
                     result.Response?.StatusCode == HttpStatusCode.OK ? result : null);
 
-            return BadRequest();
+            return NotFound();
         }
     }
 }
